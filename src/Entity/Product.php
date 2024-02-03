@@ -28,12 +28,12 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      */
     private $priceExcludingTax;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      */
     private $valueAddedTax;
 
@@ -71,24 +71,24 @@ class Product
         return $this;
     }
 
-    public function getPriceExcludingTax(): ?float
+    public function getPriceExcludingTax(): ?int
     {
         return $this->priceExcludingTax;
     }
 
-    public function setPriceExcludingTax(float $priceExcludingTax): self
+    public function setPriceExcludingTax(int $priceExcludingTax): self
     {
         $this->priceExcludingTax = $priceExcludingTax;
 
         return $this;
     }
 
-    public function getValueAddedTax(): ?float
+    public function getValueAddedTax(): ?int
     {
         return $this->valueAddedTax;
     }
 
-    public function setValueAddedTax(float $valueAddedTax): self
+    public function setValueAddedTax(int $valueAddedTax): self
     {
         $this->valueAddedTax = $valueAddedTax;
 
