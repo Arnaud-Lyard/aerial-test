@@ -10,19 +10,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    /**
-     * @Route("/", name="home")
-     */
-    public function index(EntityManagerInterface $entityManager): Response
-    {
-        $products = $entityManager->getRepository(Product::class)->findAll();
+  /**
+   * @Route("/", name="home")
+   */
+  public function index(EntityManagerInterface $entityManager): Response
+  {
+    $products = $entityManager->getRepository(Product::class)->findAll();
 
-        if (empty($products)) {
-            throw $this->createNotFoundException(
-                'No products found'
-            );
-        }
-
-        return $this->render('home/index.html.twig', ['products' => $products]);
+    if (empty($products)) {
+      throw $this->createNotFoundException(
+        'No products found'
+      );
     }
+
+    return $this->render('home/index.html.twig', ['products' => $products]);
+  }
 }
