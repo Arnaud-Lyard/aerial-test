@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'accueil
+{% endblock %}
+
+{% block body %}
+	<style></style>
+
+	<div>
+		<h1>Page d'accueil</h1>
+
+		<h2>Liste des produits</h2>
+
+		<form id="sortForm">
+			<label for="sortOrder">Trier par nom :</label>
+			<select id="sortOrder">
+				<option value="asc">Croissant</option>
+				<option value="desc">Décroissant</option>
+			</select>
+		</form>
+
+		<ul id="productList">
+			{% for product in products %}
+				<li class="product">
+					<span class="productName">{{ product.name }}</span>
+					{{ product.description}}
+					{{ product.priceExcludingTax }}
+					{{ product.valueAddedTax}}
+					<img src="{{ product.image}}" alt="{{ product.name }}">
+
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$(document).ready(function () {
+$('#sortOrder').on('change', function () {
+let sortOrder = $(this).val();
+sortProducts(sortOrder);
+});
+
+function sortProducts(order) {
+
+let productList = $('#productList');
+let productListRows = productList.find('.product').get();
+
+productListRows.sort(function (a, b) {
+let aValue = $(a).find('.productName').text();
+let bValue = $(b).find('.productName').text();
+
+if (order === 'asc') {
+return aValue.localeCompare(bValue);
+} else {
+return bValue.localeCompare(aValue);
+}
+});
+
+$.each(productListRows, function (index, item) {
+productList.append(item);
+});
+}
+});
+	</script>
+{% endblock %}

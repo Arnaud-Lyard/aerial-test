@@ -1,0 +1,11 @@
+{
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "files.associations": {
+    "*.html": "twig"
+  },
+  "emmet.includeLanguages": {
+      "twig": "html"
+  },
+}
